@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-export function getDecks () {
+export function handleGetDecks () {
   return AsyncStorage.getAllKeys((err, keys) => {
     AsyncStorage.multiGet(keys, (err, stores) => {
       stores.map((result, i, store) => {
@@ -20,15 +20,15 @@ export function getDecks () {
   });
 }
 
-export function getDeck (key) {
+export function handleGetDeck (key) {
   return AsyncStorage.getItem(key);
 }
 
-export function saveDeckTitle (title) {
+export function handleSaveDeckTitle (title) {
   return AsyncStorage.setItem(title, JSON.stringify({ title, questions: [] }));
 }
 
-export function addCardToDeck (title, card) {
+export function handleAddCardToDeck (title, card) {
   AsyncStorage.getItem(title).then(deck => {
     const data = JSON.parse(deck);
     let questions = data.questions;
