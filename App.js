@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
+// import { createStackNavigator } from 'react-navigation'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
@@ -14,6 +15,24 @@ function UdaciStatusBar ({backgroundColor, ...props}) {
     </View>
   )
 }
+
+// const MainNavigator = createStackNavigator({
+//   Home: {
+//     screen: Tabs,
+//     navigationOptions: {
+//       header: null
+//     } 
+//   },
+//   EntryDetail: {
+//     screen: EntryDetail,
+//     navigationOptions: {
+//       headerTintColor: white,
+//       headerStyle: {
+//         backgroundColor: purple,
+//       }
+//     }
+//   }
+// })
 
 export default class App extends React.Component {
   render() {
