@@ -5,11 +5,19 @@ import { loadDecks } from '../actions'
 
 class Decks extends Component {
 
+  componentDidMount() {
+    this.props.loadDecks();
+  }
+
+  componentDidUpdate() {
+    this.props.loadDecks()
+  }
+
   render() {
     return (
       <View>
         <Text>Test</Text>
-        <Text>{this.props.decks === undefined ? 'Please add a deck' : 'what' }</Text>
+        <Text>{this.props.decks === {} ? 'Please add a deck' : 'what'}</Text>
       </View>
     )
   }
@@ -21,5 +29,5 @@ function mapStateToProps (state, props) {
   }
 }
 
-export default connect(mapStateToProps)(Decks)
+export default connect(mapStateToProps, {loadDecks})(Decks)
 

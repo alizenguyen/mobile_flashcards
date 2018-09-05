@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (state, props) {
-  // console.log(state)
   return {
     decks: state
   }
