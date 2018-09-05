@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, Platform, StyleSheet, KeyboardAvoidingVie
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 import { connect } from 'react-redux';
 import { purple, black, white, gray } from '../utils/colors'
-import { savingDeck } from '../actions'
 import { handleSaveDeckTitle } from '../utils/api'
 
 //Submit button for adding a new deck
@@ -18,7 +17,7 @@ function SubmitBtn ({ onPress }) {
 }
 
 //New Deck Comonent
-class NewDeck extends React.Component {
+class NewDeck extends Component {
   state = {
     deckTitle: '',
     errorNotice: false

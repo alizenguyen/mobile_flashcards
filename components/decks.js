@@ -3,10 +3,9 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
 import { loadDecks } from '../actions'
 
-class Decks extends React.Component {
+class Decks extends Component {
 
   render() {
-
     return (
       <View>
         <Text>Test</Text>

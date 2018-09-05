@@ -66,8 +66,10 @@ const MainNavigator = createStackNavigator({
 
 export default class App extends React.Component {
   render() {
+    const store = createStore(reducer, {}, applyMiddleware(ReduxThunk))
+    
     return (
-      <Provider store={createStore(reducer, {}, applyMiddleware(ReduxThunk))}>
+      <Provider store={store}>
         <View style={{flex: 1}}>
           <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
           <MainNavigator />

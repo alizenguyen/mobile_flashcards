@@ -20,7 +20,7 @@ export const loadDecks = () => {
 }
 
 //GET ONE DECK ACTION CREATOR
-export function getDeck (deck) {
+function getDeck (deck) {
   return {
     type: GET_DECK, 
       deck,
@@ -49,7 +49,7 @@ export const loadDeck = (deck) => {
 // }
 
 //ADD CARD ACTION CREATOR
-export function addCardToDeck (dID, card) {
+function addCardToDeck (dID, card) {
   return {
     type: ADD_CARD_TO_DECK, 
       dID,
