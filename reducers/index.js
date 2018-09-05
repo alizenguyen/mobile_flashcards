@@ -12,11 +12,12 @@ function decks (state = {}, action) {
         ...state,
         ...action.deck,
       }
-    case SAVE_DECK_TITLE : 
-      return {
-        ...state,
-        [action.deck.name]: action.deck
-      }
+    // case SAVE_DECK_TITLE : 
+    //   console.log(action.deck)
+    //   return {
+    //     ...state,
+    //     [action.deck.title]: action.deck
+    //   }
     case ADD_CARD_TO_DECK : 
       return {
         ...state,

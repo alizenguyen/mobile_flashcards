@@ -33,13 +33,20 @@ export const loadDeck = (deck) => {
   }
 }
 
-//SAVE DECK ACTION CREATOR
-export function saveDeck (deck) {
-  return {
-    type: SAVE_DECK_TITLE, 
-      deck,
-  }
-}
+// //SAVE DECK ACTION CREATOR
+// function saveDeck (title) {
+//   return {
+//     type: SAVE_DECK_TITLE, 
+//       title,
+//   }
+// }
+
+// export const savingDeck = (deck) => {
+//   console.log(deck)
+//   return dispatch => {
+//     return handleSaveDeckTitle(deck).then(response => dispatch(saveDeck(response)))
+//   }
+// }
 
 //ADD CARD ACTION CREATOR
 export function addCardToDeck (dID, card) {

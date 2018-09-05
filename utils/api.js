@@ -1,12 +1,30 @@
 import { AsyncStorage } from 'react-native'
 
-export function handleGetDecks () {
-  return AsyncStorage.getAllKeys((err, keys) => {
-    AsyncStorage.multiGet(keys, (err, stores) => {
-      stores.map((result, i, store) => {
+const data = [
+  {
+    title: 'Title Text',
+    cardCount: 3,
+    key: 'item1'
+  },
+  {
+    title: 'Different Text',
+    cardCount: 3,
+    key: 'item2'
+  },
+  {
+    title: 'Some Text',
+    cardCount: 3,
+    key: 'item3'
+  }
+];
+
+export function handleGetDecks() {
+  return AsyncStorage.getAllKeys().then(keys => {
+    return AsyncStorage.multiGet(keys).then(stores => {
+      return stores.map((result, i, store) => {
         // get at each store's key/value so you can work with it
         let key = store[i][0];
-        let value = store[i][1];
+        let value = JSON.parse(store[i][1]);
 
         if (value) {
           return {
@@ -14,6 +32,10 @@ export function handleGetDecks () {
             title: value.title,
             questions: value.questions
           };
+        }
+      }).filter(items => {
+        if (items) {
+          return typeof items.questions !== 'undefined'
         }
       });
     });
@@ -25,7 +47,11 @@ export function handleGetDeck (key) {
 }
 
 export function handleSaveDeckTitle (title) {
-  return AsyncStorage.setItem(title, JSON.stringify({ title, questions: [] }));
+  try {
+    return AsyncStorage.setItem(title, JSON.stringify({ title, questions: [] })).then(console.log('added'));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export function handleAddCardToDeck (title, card) {

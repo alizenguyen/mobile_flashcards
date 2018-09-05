@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
-// import { createStackNavigator } from 'react-navigation'
-import { createStore } from 'redux'
+import ReduxThunk from 'redux-thunk';
+import { StyleSheet, Text, View, StatusBar, Platform } from 'react-native';
+import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { Constants } from 'expo'
 import { purple, white } from './utils/colors'
+import Decks from './components/Decks'
+import NewDeck from './components/NewDeck'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
   return (
@@ -16,42 +19,60 @@ function UdaciStatusBar ({backgroundColor, ...props}) {
   )
 }
 
-// const MainNavigator = createStackNavigator({
-//   Home: {
-//     screen: Tabs,
-//     navigationOptions: {
-//       header: null
-//     } 
-//   },
-//   EntryDetail: {
-//     screen: EntryDetail,
-//     navigationOptions: {
-//       headerTintColor: white,
-//       headerStyle: {
-//         backgroundColor: purple,
-//       }
-//     }
-//   }
-// })
+const Tabs = createBottomTabNavigator({
+  Home: {
+    screen: Decks,
+    navigationOptions: {
+      tabBarLabel: 'Home',
+    },
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      tabBarLabel: 'New Deck',
+    },
+  },
+}, {
+  navigationOptions: {
+    header: null
+  },
+  tabBarOptions: {
+    activeTintColor: Platform.OS === 'ios' ? purple : white,
+    style: {
+      height: 56,
+      backgroundColor: Platform.OS === 'ios' ? white : purple,
+      shadowColor: 'rgba(0, 0, 0, 0.24)',
+      shadowOffset: {
+        width: 0,
+        height: 3
+      },
+      shadowRadius: 6,
+      shadowOpacity: 1
+    }
+  }
+})
+
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: Tabs,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    } 
+  },
+})
 
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer)}>
-        <View style={styles.container}>
+      <Provider store={createStore(reducer, {}, applyMiddleware(ReduxThunk))}>
+        <View style={{flex: 1}}>
           <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
-          <Text>Test</Text>
+          <MainNavigator />
         </View>
       </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
