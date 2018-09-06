@@ -9,6 +9,7 @@ import { Constants } from 'expo'
 import { purple, white } from './utils/colors'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
+import IndividualDeck from './components/IndividualDeck'
 import logger from './middlewares/logger'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
@@ -56,6 +57,15 @@ const Tabs = createBottomTabNavigator({
 const MainNavigator = createStackNavigator({
   Home: {
     screen: Tabs,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    } 
+  },
+  DeckHome: {
+    screen: IndividualDeck,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {

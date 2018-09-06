@@ -24,7 +24,15 @@ class Decks extends Component {
           : this.props.deckArray.map(
             (deck) => { 
               return (
-                <TouchableOpacity key={deck.title}>
+                <TouchableOpacity 
+                  key={deck.title}
+                  onPress={() => this.props.navigation.navigate(
+                    'DeckHome',
+                    {
+                      entryId: deck.title,
+                      navTitle: deck.title
+                    }
+                  )}>
                   <View>
                       <Text>{deck.title}</Text>
                       <Text>{`${deck.questions.length} cards`}</Text>
