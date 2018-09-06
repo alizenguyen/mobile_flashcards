@@ -11,14 +11,17 @@ class Quiz extends Component {
     showQuestion: true,
   }
 
+  navigateToDecksPage = () => {
+    this.props.navigation.navigate('Home');
+  }
+
   render() {
     const { questions } = this.props
-    const { currentQuestion, showQuestion } = this.state
+    const { currentQuestion, showQuestion, correct, incorrect } = this.state
 
     console.log(questions.length)
     console.log(currentQuestion)
     console.log(questions)
-    console.log(questions[currentQuestion].question)
     return (
       <View>
         <Text>
@@ -26,21 +29,96 @@ class Quiz extends Component {
             ? [(showQuestion
                 ? <View>
                     <Text>{questions[currentQuestion].question}</Text>
-                    <TouchableOpacity>
+                    {/* View Answer Button */}
+                    <TouchableOpacity 
+                      onPress={() => {
+                        this.setState({
+                          showQuestion: false
+                        });
+                      }}
+                    >
                       <Text>
                         View Answer
+                      </Text>
+                    </TouchableOpacity>
+                    {/* Correct Button */}
+                    <TouchableOpacity 
+                      onPress={() => {
+                        this.setState({
+                          currentQuestion: currentQuestion + 1,
+                          correct: correct + 1
+                        });
+                      }}
+                    >
+                      <Text>
+                        Correct
+                      </Text>
+                    </TouchableOpacity>
+                    {/* Incorrect Button */}
+                    <TouchableOpacity 
+                      onPress={() => {
+                        this.setState({
+                          currentQuestion: currentQuestion + 1,
+                          correct: correct + 1
+                        });
+                      }}
+                    >
+                      <Text>
+                        Incorrect
                       </Text>
                     </TouchableOpacity>
                   </View>
                 : <View>
                     <Text>{questions[currentQuestion].answer}</Text>
-                    <TouchableOpacity>
+                    {/* View Question Button */}
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.setState({
+                          showQuestion: true
+                        });
+                      }}
+                    >
                       <Text>
                         Return to Question
                       </Text>
                     </TouchableOpacity>
+                    {/* Correct Button */}
+                    <TouchableOpacity 
+                      onPress={() => {
+                        this.setState({
+                          currentQuestion: currentQuestion + 1,
+                          correct: correct + 1
+                        });
+                      }}
+                    >
+                      <Text>
+                        Correct
+                      </Text>
+                    </TouchableOpacity>
+                    {/* Incorrect Button */}
+                    <TouchableOpacity 
+                      onPress={() => {
+                        this.setState({
+                          currentQuestion: currentQuestion + 1,
+                          correct: correct + 1
+                        });
+                      }}
+                    >
+                      <Text>
+                        Incorrect
+                      </Text>
+                    </TouchableOpacity>
                   </View>)]
-            : <Text>No more questions.</Text>
+            : <View> 
+                <Text>No more questions.</Text>
+                <TouchableOpacity 
+                    onPress={this.navigateToDecksPage}
+                  >
+                  <Text>
+                    Back to decks.
+                  </Text>
+                </TouchableOpacity>
+              </View>
           }
         </Text>
       </View>
