@@ -12,12 +12,15 @@ function decks (state = {}, action) {
         ...state,
         ...action.deck,
       }
-    // case SAVE_DECK_TITLE : 
-    //   console.log(action.deck)
-    //   return {
-    //     ...state,
-    //     [action.deck.title]: action.deck
-    //   }
+    case SAVE_DECK_TITLE : 
+      console.log(action.title)
+      return {
+        ...state,
+        [action.title]: {
+          title: action.title,
+          questions: []
+        }
+      }
     case ADD_CARD_TO_DECK : 
       return {
         ...state,

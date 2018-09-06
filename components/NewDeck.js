@@ -4,6 +4,7 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 import { connect } from 'react-redux';
 import { purple, black, white, gray } from '../utils/colors'
 import { handleSaveDeckTitle } from '../utils/api'
+import { saveDeck } from '../actions'
 
 //Submit button for adding a new deck
 function SubmitBtn ({ onPress }) {
@@ -23,11 +24,16 @@ class NewDeck extends Component {
     errorNotice: false
   };
 
+  componentDidUpdate () {
+    console.log(this.props.decks)
+  }
+
   handleSubmit = () => {
     if (this.state.deckTitle) {
       const { deckTitle } = this.state;
 
-      handleSaveDeckTitle(deckTitle);
+      handleSaveDeckTitle(deckTitle)
+      this.props.dispatch(saveDeck(deckTitle));
 
       this.setState({
         errorMessage: false,

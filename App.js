@@ -9,6 +9,7 @@ import { Constants } from 'expo'
 import { purple, white } from './utils/colors'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
+import logger from './middlewares/logger'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
   return (
@@ -66,8 +67,8 @@ const MainNavigator = createStackNavigator({
 
 export default class App extends React.Component {
   render() {
-    const store = createStore(reducer, {}, applyMiddleware(ReduxThunk))
-    
+    const store = createStore(reducer, {}, applyMiddleware(ReduxThunk, logger))
+
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
