@@ -5,14 +5,44 @@ import { purple } from '../utils/colors'
 
 class Quiz extends Component {
   state = {
+    currentQuestion: 0,
     correct: 0,
     incorrect: 0,
+    showQuestion: true,
   }
 
   render() {
+    const { questions } = this.props
+    const { currentQuestion, showQuestion } = this.state
+
+    console.log(questions.length)
+    console.log(currentQuestion)
+    console.log(questions)
+    console.log(questions[currentQuestion].question)
     return (
       <View>
-        <Text>Test</Text>
+        <Text>
+          {currentQuestion < questions.length
+          ? [(showQuestion === false
+              ? <View>
+                  <Text>{questions[currentQuestion].question}</Text>
+                  <TouchableOpacity>
+                    <Text>
+                      View Answer
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              : <View>
+                  <Text>{questions[currentQuestion].answer}</Text>
+                  <TouchableOpacity>
+                    <Text>
+                      Return to Question
+                    </Text>
+                  </TouchableOpacity>
+                </View>)]
+          : <Text>No more questions.</Text>
+          }
+        </Text>
       </View>
     )
   }
