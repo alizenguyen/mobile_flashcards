@@ -11,6 +11,7 @@ import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import NewDeckCards from './components/NewDeckCards'
 import IndividualDeck from './components/IndividualDeck'
+import Quiz from './components/Quiz'
 import logger from './middlewares/logger'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
@@ -83,6 +84,15 @@ const MainNavigator = createStackNavigator({
       }
     } 
   },
+  Quiz: {
+    screen: Quiz,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    } 
+  },
 })
 
 export default class App extends React.Component {
@@ -94,6 +104,7 @@ export default class App extends React.Component {
         <View style={{flex: 1}}>
           <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
           <MainNavigator />
+          {/* <Quiz /> */}
         </View>
       </Provider>
     );

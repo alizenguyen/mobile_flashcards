@@ -36,7 +36,7 @@ class IndividualDeck extends Component {
         </TouchableOpacity>
         <TouchableOpacity 
           onPress={() => this.props.navigation.navigate(
-            'DeckHome',
+            'Quiz',
             {
               entryId: title,
               navTitle: title
