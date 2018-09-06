@@ -74,7 +74,7 @@ class Quiz extends Component {
                       onPress={() => {
                         this.setState({
                           currentQuestion: currentQuestion + 1,
-                          correct: correct + 1
+                          incorrect: incorrect + 1
                         });
                       }}
                     >
@@ -139,7 +139,7 @@ class Quiz extends Component {
                     onPress={this.navigateToDecksPage}
                   >
                   <Text>
-                    Back to decks.
+                    Back to Decks.
                   </Text>
                 </TouchableOpacity>
               </View>

@@ -25,7 +25,7 @@ class IndividualDeck extends Component {
       <View>
         <View>
           <Text>{title}</Text>
-          <Text>{metrics.questions.length} cards</Text>
+          <Text>{metrics.questions.length} Questions</Text>
         </View>
         <TouchableOpacity 
           onPress={() => this.props.navigation.navigate(
