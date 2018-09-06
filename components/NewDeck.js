@@ -41,7 +41,11 @@ class NewDeck extends Component {
       });
 
       this.props.navigation.navigate(
-        'Home',
+        'DeckHome',
+        {
+          entryId: deckTitle,
+          navTitle: deckTitle
+        },
         Keyboard.dismiss()
       );
     } else {

@@ -11,6 +11,17 @@ class Quiz extends Component {
     showQuestion: true,
   }
 
+  restartQuiz = () => {
+    this.setState(() =>{
+      return {
+        showQuestion: true,
+        currentQuestion: 0,
+        correct: 0,
+        incorrect: 0
+      }
+    })
+  }
+
   navigateToDecksPage = () => {
     this.props.navigation.navigate('Home');
   }
@@ -19,15 +30,13 @@ class Quiz extends Component {
     const { questions } = this.props
     const { currentQuestion, showQuestion, correct, incorrect } = this.state
 
-    console.log(questions.length)
-    console.log(currentQuestion)
-    console.log(questions)
     return (
       <View>
         <Text>
           {currentQuestion < questions.length
             ? [(showQuestion
                 ? <View>
+                    <Text>Question: {currentQuestion + 1}/{questions.length} </Text>
                     <Text>{questions[currentQuestion].question}</Text>
                     {/* View Answer Button */}
                     <TouchableOpacity 
@@ -69,6 +78,7 @@ class Quiz extends Component {
                     </TouchableOpacity>
                   </View>
                 : <View>
+                    <Text>Question: {currentQuestion + 1}/{questions.length} </Text>
                     <Text>{questions[currentQuestion].answer}</Text>
                     {/* View Question Button */}
                     <TouchableOpacity
@@ -111,6 +121,14 @@ class Quiz extends Component {
                   </View>)]
             : <View> 
                 <Text>No more questions.</Text>
+                <Text>You scored {correct}/{questions.length}.</Text>
+                <TouchableOpacity 
+                    onPress={this.restartQuiz}
+                  >
+                  <Text>
+                    Restart Quiz.
+                  </Text>
+                </TouchableOpacity>
                 <TouchableOpacity 
                     onPress={this.navigateToDecksPage}
                   >
@@ -132,6 +150,7 @@ function mapStateToProps (state, {navigation}) {
 
   console.log(questions)
   return {
+    qID: entryId,
     questions: questions
   }
 }

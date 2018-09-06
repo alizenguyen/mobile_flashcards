@@ -31,7 +31,7 @@ class IndividualDeck extends Component {
             }
           )}>
           <View>
-              <Text>Add Card</Text>
+              <Text>Add Question</Text>
           </View>
         </TouchableOpacity>
         <TouchableOpacity 
