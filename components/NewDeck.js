@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Platform, StyleSheet, KeyboardAvoidingView, } from 'react-native'
+import { View, Text, TouchableOpacity, Platform, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 import { connect } from 'react-redux';
 import { purple, black, white, gray } from '../utils/colors'
@@ -36,24 +36,19 @@ class NewDeck extends Component {
       this.props.dispatch(saveDeck(deckTitle));
 
       this.setState({
-        errorMessage: false,
+        errorNotice: false,
         titleText: ''
       });
 
-    //   this.props.navigation.navigate(
-    //     'NewDeckCards',
-    //     {
-    //       entryId: titleText,
-    //       navTitle: titleText
-    //     },
-    //     Keyboard.dismiss()
-    //   );
-    // } else {
-    //   this.setState({ errorMessage: true })
-    // }
+      this.props.navigation.navigate(
+        'Home',
+        Keyboard.dismiss()
+      );
+    } else {
+      this.setState({ errorNotice: true })
+    }
 
-    };
-  }
+  };
 
   render() {
 
@@ -77,6 +72,9 @@ class NewDeck extends Component {
                 onChangeText={deckTitle => this.setState({ deckTitle })}
                 value={this.state.deckTitle}
               />
+            <FormValidationMessage>
+              {this.state.errorNotice ? 'Please enter a title.': ''}
+            </FormValidationMessage>
             <FormValidationMessage>
               {this.state.errorMessage ? 'Please input a deck title.': ''}
             </FormValidationMessage>
