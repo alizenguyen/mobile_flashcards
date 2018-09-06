@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
+import { Card, Button } from 'react-native-elements';
+
 
 class IndividualDeck extends Component {
+
+  navigateToQuiz = () => {
+    const { title } = this.props
+
+    this.props.navigation.navigate(
+      'Quiz',
+      {
+        entryId: title,
+        navTitle: title
+      }
+    )
+  }
+
   render () {
     const { title, metrics } = this.props
 
@@ -20,23 +35,13 @@ class IndividualDeck extends Component {
               navTitle: title
             }
           )}>
-          <View>
               <Text>Add Question</Text>
-          </View>
         </TouchableOpacity>
         <TouchableOpacity 
-          onPress={() => this.props.navigation.navigate(
-            'Quiz',
-            {
-              entryId: title,
-              navTitle: title
-            }
-          )}>
-          <View>
+          onPress={this.navigateToQuiz}>
             <Text>Start Quiz</Text>
-          </View>
         </TouchableOpacity>
-      </View>
+    </View>
     )
   }
 }

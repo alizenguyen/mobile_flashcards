@@ -38,10 +38,10 @@ class Quiz extends Component {
 
     return (
       <View>
-        <Text>
+        <View>
           {currentQuestion < questions.length
             ? [(showQuestion
-                ? <View>
+                ? <View key={questions[currentQuestion].question}>
                     <Text>Question: {currentQuestion + 1}/{questions.length} </Text>
                     <Text>{questions[currentQuestion].question}</Text>
                     {/* View Answer Button */}
@@ -83,7 +83,7 @@ class Quiz extends Component {
                       </Text>
                     </TouchableOpacity>
                   </View>
-                : <View>
+                : <View key={questions[currentQuestion].question}>
                     <Text>Question: {currentQuestion + 1}/{questions.length} </Text>
                     <Text>{questions[currentQuestion].answer}</Text>
                     {/* View Question Button */}
@@ -144,7 +144,7 @@ class Quiz extends Component {
                 </TouchableOpacity>
               </View>
           }
-        </Text>
+        </View>
       </View>
     )
   }
