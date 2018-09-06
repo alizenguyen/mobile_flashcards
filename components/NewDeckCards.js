@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Platform, StyleSheet, Keyboard } from 'react-native'
 import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
 import { connect } from 'react-redux';
 import { purple, black, white, gray } from '../utils/colors'
@@ -43,19 +43,17 @@ class NewDeckCards extends React.Component {
         titleText: ''
       });
 
-    //   this.props.navigation.navigate(
-    //     'NewDeckCards',
-    //     {
-    //       entryId: titleText,
-    //       navTitle: titleText
-    //     },
-    //     Keyboard.dismiss()
-    //   );
-    // } else {
-    //   this.setState({ errorMessage: true })
-    // }
-
-    };
+      this.props.navigation.navigate(
+        'DeckHome',
+        {
+          entryId: title,
+          navTitle: title
+        },
+        Keyboard.dismiss()
+      )
+    } else {
+      this.setState({ errorMessage: true })
+    }
   }
 
   render() {
