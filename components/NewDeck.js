@@ -37,7 +37,7 @@ class NewDeck extends Component {
 
       this.setState({
         errorNotice: false,
-        titleText: ''
+        deckTitle: ''
       });
 
       this.props.navigation.navigate(
