@@ -13,6 +13,7 @@ import NewDeckCards from './components/NewDeckCards'
 import IndividualDeck from './components/IndividualDeck'
 import Quiz from './components/Quiz'
 import logger from './middlewares/logger'
+import { setLocalNotification } from './utils/helpers'
 
 function UdaciStatusBar ({backgroundColor, ...props}) {
   return (
@@ -96,6 +97,10 @@ const MainNavigator = createStackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     const store = createStore(reducer, {}, applyMiddleware(ReduxThunk, logger))
 
