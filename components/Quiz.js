@@ -23,38 +23,24 @@ class Quiz extends Component {
       <View>
         <Text>
           {currentQuestion < questions.length
-          ? <View>
-              [(showQuestion === false
-                  ? <View>
-                      <Text>{questions[currentQuestion].question}</Text>
-                      <TouchableOpacity>
-                        <Text>
-                          View Answer
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  : <View>
-                      <Text>{questions[currentQuestion].answer}</Text>
-                      <TouchableOpacity>
-                        <Text>
-                          Return to Question
-                        </Text>
-                      </TouchableOpacity>
-                    </View>)]
-                {/* Correct Answer Button */}
-                <TouchableOpacity>
-                  <Text>
-                    Correct
-                  </Text>
-                </TouchableOpacity>
-                {/* Correct Answer Button */}
-                <TouchableOpacity>
-                  <Text>
-                    Incorrect
-                  </Text>
-                </TouchableOpacity>
-              </View>
-          : <Text>No more questions.</Text>
+            ? [(showQuestion
+                ? <View>
+                    <Text>{questions[currentQuestion].question}</Text>
+                    <TouchableOpacity>
+                      <Text>
+                        View Answer
+                      </Text>
+                    </TouchableOpacity>
+                  </View>
+                : <View>
+                    <Text>{questions[currentQuestion].answer}</Text>
+                    <TouchableOpacity>
+                      <Text>
+                        Return to Question
+                      </Text>
+                    </TouchableOpacity>
+                  </View>)]
+            : <Text>No more questions.</Text>
           }
         </Text>
       </View>
