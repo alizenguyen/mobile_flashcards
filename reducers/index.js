@@ -24,9 +24,9 @@ function decks (state = {}, action) {
     case ADD_CARD_TO_DECK : 
       return {
         ...state,
-        [action.dID]: {
-          ...state.dID,
-          [action.dID.questions]: state[dID].questions.concat(action.card)
+        [action.title]: {
+          ...state[action.title],
+          questions: state[action.title].questions.concat(action.card)
         }  
       }
     default :
