@@ -24,7 +24,7 @@ class IndividualDeck extends Component {
         </View>
         <TouchableOpacity 
           onPress={() => this.props.navigation.navigate(
-            'DeckHome',
+            'NewCard',
             {
               entryId: title,
               navTitle: title

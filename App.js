@@ -9,6 +9,7 @@ import { Constants } from 'expo'
 import { purple, white } from './utils/colors'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
+import NewDeckCards from './components/NewDeckCards'
 import IndividualDeck from './components/IndividualDeck'
 import logger from './middlewares/logger'
 
@@ -66,6 +67,15 @@ const MainNavigator = createStackNavigator({
   },
   DeckHome: {
     screen: IndividualDeck,
+    navigationOptions: {
+      headerTintColor: white,
+      headerStyle: {
+        backgroundColor: purple,
+      }
+    } 
+  },
+  NewCard: {
+    screen: NewDeckCards,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
