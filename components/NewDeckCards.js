@@ -4,6 +4,7 @@ import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elemen
 import { connect } from 'react-redux';
 import { purple, black, white, gray } from '../utils/colors'
 import { handleAddCardToDeck } from '../utils/api'
+import { addCardToDeck } from '../actions'
 
 //Submit button for adding a new deck
 function SubmitBtn ({ onPress }) {
@@ -27,8 +28,15 @@ class NewDeckCards extends React.Component {
   handleSubmit = () => {
     if (this.state.cardTitle && this.state.cardAnswer) {
       const { cardTitle, cardAnswer } = this.state;
+      const { title } = this.props;
 
-      handleAddCardToDeck(deckTitle, cardAnswer);
+      const card = {
+        question: cardTitle,
+        answer: cardAnswer
+      }
+
+      handleAddCardToDeck(title, card)
+      this.props.dispatch(addCardToDeck(title, card));
 
       this.setState({
         errorMessage: false,
@@ -123,8 +131,14 @@ const styles = StyleSheet.create({
   },
 })
 
-// const mapStateToProps = state => {
+function mapStateToProps (state, { navigation }) {
+  const { entryId } = navigation.state.params
 
-// };
+   return {
+    entryId,
+    metrics: state[entryId],
+    title: state[entryId].title
+  }
+}
 
-export default NewDeckCards
+export default connect(mapStateToProps)(NewDeckCards)

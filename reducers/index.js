@@ -25,8 +25,8 @@ function decks (state = {}, action) {
       return {
         ...state,
         [action.dID]: {
-          ...state[dID],
-          [action.questions]: state[dID][questions].concat(action.card)
+          ...state.dID],
+          [action.dID.questions]: state[dID].questions.concat(action.card)
         }  
       }
     default :

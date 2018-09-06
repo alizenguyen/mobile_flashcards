@@ -66,7 +66,7 @@ class NewDeck extends Component {
           </View>
           <View styles={styles.row}>
             <FormInput
-                placeholder='Question Title'
+                placeholder='New Deck'
                 placeholderTextColor='gray'
                 style={{width: 10}}
                 onChangeText={deckTitle => this.setState({ deckTitle })}

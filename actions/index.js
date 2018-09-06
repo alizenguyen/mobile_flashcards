@@ -42,10 +42,18 @@ export function saveDeck (title) {
 }
 
 //ADD CARD ACTION CREATOR
-function addCardToDeck (dID, card) {
+export function addCardToDeck (title, card) {
   return {
     type: ADD_CARD_TO_DECK, 
-      dID,
+      title,
       card
   }
 }
+
+// export const addingCardToDeck= (qID, card) => {
+//   console.log(qID)
+//   console.log(card)
+//   return dispatch => {
+//     return handleAddCardToDeck(qID, card).then(response => dispatch(addCardToDeck(response)))
+//   }
+// }

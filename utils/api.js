@@ -37,6 +37,7 @@ export function handleSaveDeckTitle (title) {
 }
 
 export function handleAddCardToDeck (title, card) {
+  console.log(title)
   AsyncStorage.getItem(title).then(deck => {
     const data = JSON.parse(deck);
     let questions = data.questions;
@@ -47,5 +48,5 @@ export function handleAddCardToDeck (title, card) {
     AsyncStorage.mergeItem(title, JSON.stringify({
       questions
     }));
-  });
+  }).then(console.log("DONE"));
 }
