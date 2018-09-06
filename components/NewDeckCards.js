@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, Platform, StyleSheet, Keyboard } from 'react-native'
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import { FormInput, FormValidationMessage } from 'react-native-elements'
 import { connect } from 'react-redux';
-import { purple, black, white, gray } from '../utils/colors'
+import { purple, white } from '../utils/colors'
 import { handleAddCardToDeck } from '../utils/api'
 import { addCardToDeck } from '../actions'
 
@@ -18,7 +18,7 @@ function SubmitBtn ({ onPress }) {
 }
 
 //New Deck Comonent
-class NewDeckCards extends React.Component {
+class NewDeckCards extends Component {
   state = {
     cardTitle: '',
     cardAnswer: '',

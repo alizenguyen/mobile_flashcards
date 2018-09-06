@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, Platform, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native'
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import { FormInput, FormValidationMessage } from 'react-native-elements'
 import { connect } from 'react-redux';
-import { purple, black, white, gray } from '../utils/colors'
+import { purple, white } from '../utils/colors'
 import { handleSaveDeckTitle } from '../utils/api'
 import { saveDeck } from '../actions'
 

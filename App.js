@@ -1,6 +1,6 @@
 import React from 'react';
 import ReduxThunk from 'redux-thunk';
-import { StyleSheet, Text, View, StatusBar, Platform } from 'react-native';
+import { View, StatusBar, Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'

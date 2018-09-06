@@ -1,20 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, TouchableOpacity, Platform, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native'
-import { FormLabel, FormInput, FormValidationMessage } from 'react-native-elements'
+import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
-import { purple, black, white, gray } from '../utils/colors'
-import { handleSaveDeckTitle } from '../utils/api'
-import { saveDeck } from '../actions'
 
-//New Deck Comonent
 class IndividualDeck extends Component {
-  // static navigationOptions = ({ navigation }) => {
-  //   const { entryId } = navigation.state.params
-  //   console.log(entryId)
-  // }
-
   render () {
-    const { title, entryId, metrics } = this.props
+    const { title, metrics } = this.props
 
     return (
       <View>
