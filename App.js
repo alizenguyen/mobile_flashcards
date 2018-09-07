@@ -6,7 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import { Constants } from 'expo'
-import { purple, white } from './utils/colors'
+import { azure, white } from './utils/colors'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import NewDeckCards from './components/NewDeckCards'
@@ -43,10 +43,10 @@ const Tabs = createBottomTabNavigator({
     header: null
   },
   tabBarOptions: {
-    activeTintColor: Platform.OS === 'ios' ? purple : white,
+    activeTintColor: Platform.OS === 'ios' ? azure : white,
     style: {
       height: 56,
-      backgroundColor: Platform.OS === 'ios' ? white : purple,
+      backgroundColor: Platform.OS === 'ios' ? white : azure,
       shadowColor: 'rgba(0, 0, 0, 0.24)',
       shadowOffset: {
         width: 0,
@@ -70,7 +70,7 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: purple,
+        backgroundColor: azure,
       }
     } 
   },
@@ -79,7 +79,7 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: purple,
+        backgroundColor: azure,
       }
     } 
   },
@@ -88,7 +88,7 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: purple,
+        backgroundColor: azure,
       }
     } 
   },
@@ -97,7 +97,7 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: purple,
+        backgroundColor: azure,
       }
     } 
   },
@@ -114,8 +114,8 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
-          <MainNavigator />
+          <UdaciStatusBar backgroundColor={azure} barStyle="light-content" />
+          <MainNavigator style={{backgroundColor: white}}/>
           {/* <Quiz /> */}
         </View>
       </Provider>
