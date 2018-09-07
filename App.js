@@ -116,7 +116,6 @@ export default class App extends React.Component {
         <View style={{flex: 1}}>
           <UdaciStatusBar backgroundColor={azure} barStyle="light-content" />
           <MainNavigator style={{backgroundColor: white}}/>
-          {/* <Quiz /> */}
         </View>
       </Provider>
     );
