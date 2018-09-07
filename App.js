@@ -11,6 +11,7 @@ import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
 import NewDeckCards from './components/NewDeckCards'
 import IndividualDeck from './components/IndividualDeck'
+import TitleScreen from './components/TitleScreen'
 import Quiz from './components/Quiz'
 import logger from './middlewares/logger'
 import { setLocalNotification } from './utils/helpers'
@@ -58,6 +59,12 @@ const Tabs = createBottomTabNavigator({
 })
 
 const MainNavigator = createStackNavigator({
+  Title: {
+    screen: TitleScreen,
+    navigationOptions: {
+      header: null
+    },
+  },
   Home: {
     screen: Tabs,
     navigationOptions: {
