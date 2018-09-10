@@ -1,11 +1,10 @@
 import React from 'react';
 import ReduxThunk from 'redux-thunk';
-import { View, StatusBar, Platform } from 'react-native';
+import { View, Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
-import { Constants } from 'expo'
 import { azure, white } from './utils/colors'
 import Decks from './components/Decks'
 import NewDeck from './components/NewDeck'
@@ -15,15 +14,6 @@ import TitleScreen from './components/TitleScreen'
 import Quiz from './components/Quiz'
 import logger from './middlewares/logger'
 import { setLocalNotification } from './utils/helpers'
-
-function UdaciStatusBar ({backgroundColor, ...props}) {
-  return (
-    //CONSTANTS COMES WITH THE STATUS BAR HEIGHT FOR EACH PlATFORM SO WE DON'T HAVE TO KNOW THE EXACT NUMBER
-    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
-      <StatusBar translucent backgroundColor={backgroundColor} {...props} />
-    </View>
-  )
-}
 
 const Tabs = createBottomTabNavigator({
   Home: {
@@ -114,7 +104,6 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
-          <UdaciStatusBar backgroundColor={azure} barStyle="light-content" />
           <MainNavigator style={{backgroundColor: white}}/>
         </View>
       </Provider>

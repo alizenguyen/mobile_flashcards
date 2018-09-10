@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
 import { loadDecks } from '../actions'
-import { purple } from '../utils/colors'
+import { purple, azure } from '../utils/colors'
+import UdaciStatusBar from './UdaciStatusBar'
 
 class Decks extends Component {
 
@@ -19,6 +20,7 @@ class Decks extends Component {
   render() {
     return (
       <View>
+        <UdaciStatusBar backgroundColor={azure} barStyle="light-content" />
         {Object.keys(this.props.decks).length === 0
           ? <Text style={{color: purple}}>Please add a deck.</Text>
           : this.props.deckArray.map(

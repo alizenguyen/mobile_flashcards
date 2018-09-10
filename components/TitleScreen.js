@@ -5,17 +5,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons'
 export default function TitleScreen () {
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <ImageBackground 
         source={require('../assets/images/title_background.png')}
         style={styles.backgroundImage}
         imageStyle={{resizeMode: 'cover'}}
       >
-        <Text>test</Text>
-        {/* <MaterialCommunityIcons
-          name={'cards-outline'}
-          size={100}
-        /> */}
+        <View>
+          <Text>test</Text>
+          <MaterialCommunityIcons
+            name={'cards-outline'}
+            size={100}
+          />
+        </View>
       </ImageBackground>
     </View>
   )
