@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux';
 import { Card, Button } from 'react-native-elements';
+import { azure } from '../utils/colors'
+import UdaciStatusBar from './UdaciStatusBar'
 
 
 class IndividualDeck extends Component {
@@ -23,6 +25,7 @@ class IndividualDeck extends Component {
 
     return (
       <View>
+        <UdaciStatusBar backgroundColor={azure} barStyle="light-content" />
         <View>
           <Text>{title}</Text>
           <Text>{metrics.questions.length} Questions</Text>

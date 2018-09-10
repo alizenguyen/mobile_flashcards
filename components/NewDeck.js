@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, Platform, StyleSheet, KeyboardAvoidingView, Keyboard } from 'react-native'
 import { FormInput, FormValidationMessage } from 'react-native-elements'
 import { connect } from 'react-redux';
-import { purple, white } from '../utils/colors'
+import { purple, white, azure } from '../utils/colors'
 import { handleSaveDeckTitle } from '../utils/api'
 import { saveDeck } from '../actions'
+import UdaciStatusBar from './UdaciStatusBar'
 
 //Submit button for adding a new deck
 function SubmitBtn ({ onPress }) {
@@ -64,6 +65,7 @@ class NewDeck extends Component {
         }}
         behavior="padding"
       >
+        <UdaciStatusBar backgroundColor={azure} barStyle="light-content" />
         <View style={styles.center}>
           <View styles={styles.row}>
             <Text>What is the title of your new deck?</Text>
